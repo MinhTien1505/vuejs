@@ -19,13 +19,9 @@
             required
           ></v-text-field>
 
-          <v-btn color="success" class="mr-4 mt-5">
-            Login
-          </v-btn>
+          <v-btn color="success" class="mr-4 mt-5"> Login </v-btn>
 
-          <v-btn color="primary" class="mt-5">
-            Register
-          </v-btn>
+          <v-btn color="primary" class="mt-5"> Register </v-btn>
         </v-form>
       </div>
     </v-main>
@@ -33,6 +29,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data: () => ({
     valid: true,
@@ -47,6 +45,43 @@ export default {
       (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     ],
   }),
+  methods: {
+    async loginAPI() {
+      await axios({
+        url:
+          "https://n4kosokytj.execute-api.ap-northeast-1.amazonaws.com/TestDeloyAPI/testsginin",
+        method: "POST",
+        body: {
+          id: "vuhoang@vn-cubesystem.com",
+          password: "123456Csv",
+        },
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+
+  created() {
+    axios({
+      url:
+        "https://n4kosokytj.execute-api.ap-northeast-1.amazonaws.com/TestDeloyAPI/testsginin",
+      method: "POST",
+      data: {
+        "id": "vuhoang@vn-cubesystem.com",
+        "password": "123456Csv"
+      }
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };
 </script>
 

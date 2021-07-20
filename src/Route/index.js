@@ -9,12 +9,12 @@ export const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/',
+            path: '/login',
             component: Login
         },
         {
             path: '/dashboard',
             component: Dashboard
-        }
+        },
     ]
 })
